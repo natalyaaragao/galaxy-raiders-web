@@ -93,7 +93,7 @@ caption {
 
 <script>
 
-import userData from './Leaderboard.json'
+import userData from '~/components/Leaderboard.json'
 
 export default {
   name: "scores",
