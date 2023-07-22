@@ -2,6 +2,15 @@
   <div id="canvas">
     <div id="deep-space" />
     <div id="space-field">
+      <router-link to="/home">
+        <button type="button">
+          <svg class="svg-icon" role="img" height="10"
+            width="10" viewBox="0 0 10 10" aria-hidden="true" focusable="false">
+            <path id="play" d="m1 7h8v2h-8zm0-3h8v2h-8zm0-3h8v2h-8z"/>
+          </svg>
+        </button>
+      </router-link>
+      
       <SpaceObject id="spaceship" class="spaceship" :data="spaceField.ship" resolution="2" />
 
       <SpaceObject class="asteroid" :data="asteroid" resolution="2"
@@ -20,6 +29,7 @@
 </template>
 
 <script setup>
+
 const {
   data: spaceField,
   refresh: updateSpaceField
@@ -37,6 +47,7 @@ onMounted(() => {
     };
 
     const command = keyToCommand[event.code];
+    var svg = document.querySelector('.playpause');
 
     // Ignore if invalid key was pressed
     if (command === undefined) return;
@@ -111,5 +122,29 @@ onMounted(() => {
 
 .explosion {
   background-image: url("~/assets/explosion.png");
+}
+button {
+  font-size: 1.25em;
+  font-weight: 200;
+  line-height: 1;
+  text-transform: uppercase;
+  position: relative;
+  border: .1875em solid;
+  padding: 1em;
+  color: #777b99;
+  background: transparent;
+  border-radius: .125em;
+  transition: background .3s;
+  margin: 0 10px;
+}
+
+.svg-icon {
+  position: relative;
+  top: .125em;
+  flex-shrink: 0;
+  height: 1em;
+  width: 1em;
+  fill: currentColor;
+  transition: fill .3s;
 }
 </style>
